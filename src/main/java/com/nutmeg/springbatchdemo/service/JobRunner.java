@@ -1,4 +1,4 @@
-package com.nutmeg.springbatchdemo.runner;
+package com.nutmeg.springbatchdemo.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
