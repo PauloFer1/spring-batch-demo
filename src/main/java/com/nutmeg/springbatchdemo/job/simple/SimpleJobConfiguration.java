@@ -40,7 +40,7 @@ public class SimpleJobConfiguration {
     }
 
     /**
-     * Gets all data from DEMO table and update the PRICE (Add fee) and UPDATED_AT columns.
+     * Gets all data from DEMO table and update PRICE (Add fee) and UPDATED_AT columns.
      * @param jobBuilderFactory
      * @param simpleJobStep
      * @return Job
