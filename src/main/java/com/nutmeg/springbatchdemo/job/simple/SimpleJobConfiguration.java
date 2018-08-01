@@ -4,7 +4,7 @@ import com.nutmeg.springbatchdemo.job.simple.listener.SimpleJobListener;
 import com.nutmeg.springbatchdemo.job.simple.processor.SimpleJobItemProcessor;
 import com.nutmeg.springbatchdemo.job.simple.reader.SimpleJobItemReader;
 import com.nutmeg.springbatchdemo.job.simple.writer.SimpleJobItemWriter;
-import com.nutmeg.springbatchdemo.model.Demo;
+import com.nutmeg.springbatchdemo.model.Price;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -30,7 +30,7 @@ public class SimpleJobConfiguration {
             SimpleJobItemWriter simpleJobItemWriter
     ) {
         return stepBuilderFactory.get(JOB_NAME + "_step")
-                .<Demo, Demo>chunk(CHUNK_SIZE)
+                .<Price, Price>chunk(CHUNK_SIZE)
                 .reader(simpleJobItemReader)
                 .processor(simpleJobItemProcessor)
                 .writer(simpleJobItemWriter)
@@ -40,7 +40,7 @@ public class SimpleJobConfiguration {
     }
 
     /**
-     * Gets all data from DEMO table and update PRICE (Add fee) and UPDATED_AT columns.
+     * Gets all data from PRICE table and update PRICE (Add fee) and UPDATED_AT columns.
      * @param jobBuilderFactory
      * @param simpleJobStep
      * @return Job

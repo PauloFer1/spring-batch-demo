@@ -1,6 +1,6 @@
 package com.nutmeg.springbatchdemo.job.simple.processor;
 
-import com.nutmeg.springbatchdemo.model.Demo;
+import com.nutmeg.springbatchdemo.model.Price;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemProcessor;
@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 @Named
 @StepScope
-public class SimpleJobItemProcessor implements ItemProcessor<Demo, Demo> {
+public class SimpleJobItemProcessor implements ItemProcessor<Price, Price> {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -29,14 +29,14 @@ public class SimpleJobItemProcessor implements ItemProcessor<Demo, Demo> {
     }
 
     @Override
-    public Demo process(Demo demo) throws Exception {
-        log.info("Adding Fees to {}", demo.toString());
+    public Price process(Price price) throws Exception {
+        log.info("Adding Fees to {}", price.toString());
 
-        // Simulate costy processing
+        // Simulate costly processing
         Thread.sleep(10);
         BigDecimal addFee = new BigDecimal(fee);
-        demo.setPrice(demo.getPrice().add(addFee));
-        demo.setUpdatedAt(LocalDateTime.parse(updateDate, FORMATTER));
-        return demo;
+        price.setPrice(price.getPrice().add(addFee));
+        price.setUpdatedAt(LocalDateTime.parse(updateDate, FORMATTER));
+        return price;
     }
 }

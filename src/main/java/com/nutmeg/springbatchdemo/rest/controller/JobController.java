@@ -25,7 +25,7 @@ public class JobController {
         log.info("Starting JOB: {}", jobName);
 
         JobExecution jobExecution = jobRunner.runJob(jobName, body);
-        JobView jobView = new JobView().builder()
+        JobView jobView = JobView.builder()
                 .jobName(jobName)
                 .jobReference(jobExecution.getJobId())
                 .jobInstance(jobExecution.getJobInstance().getInstanceId())

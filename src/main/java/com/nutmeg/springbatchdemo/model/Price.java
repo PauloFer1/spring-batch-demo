@@ -8,9 +8,10 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class Demo {
+public class Price {
     private String uuid;
     private LocalDateTime updatedAt;
     private BigDecimal price;
     private boolean isValid;
+    private String stockUuid;
 }
