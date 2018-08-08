@@ -14,11 +14,13 @@ import org.springframework.core.task.TaskExecutor;
 @EnableBatchProcessing
 public class JobConfiguration {
 
+    private static final int NUMBER_THREADS = 8;
+
     @Bean
     @Primary
     public TaskExecutor taskExecutor() {
         SimpleAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor("batch");
-        asyncTaskExecutor.setConcurrencyLimit(8);
+        asyncTaskExecutor.setConcurrencyLimit(NUMBER_THREADS);
         return asyncTaskExecutor;
     }
 

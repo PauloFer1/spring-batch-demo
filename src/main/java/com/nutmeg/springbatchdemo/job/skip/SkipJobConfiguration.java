@@ -24,6 +24,8 @@ public class SkipJobConfiguration {
 
     private static final String SKIP_JOB_NAME = "skip_job";
     private static final int CHUNK_SIZE = 8;
+    private static final int SKIP_LIMIT = 10;
+    private static final int RETRY_LIMIT = 4;
 
     @Bean
     public Step skipJobStep(
@@ -40,9 +42,9 @@ public class SkipJobConfiguration {
                 .processor(skipJobItemProcessor)
                 .writer(skipJobItemWriter)
                 .faultTolerant()
-                .skipLimit(10)
+                .skipLimit(SKIP_LIMIT)
                 .skip(SkipJobException.class)
-                .retryLimit(4)
+                .retryLimit(RETRY_LIMIT)
                 .retry(SkipJobTimeoutException.class)
                 .listener(skipJobListener)
                 .taskExecutor(taskExecutor)

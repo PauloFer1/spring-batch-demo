@@ -32,6 +32,7 @@ public class ConditionalJobConfiguration {
     private static final String FAILED_JOB_NAME = "failed_job";
     private static final String STOP_STEP_JOB_NAME = "stop_step_job";
     private static final int CHUNK_SIZE = 6;
+    private static final int THREAD_LIMIT = 8;
 
     @Bean
     public Step invalidatePrice(
@@ -87,7 +88,7 @@ public class ConditionalJobConfiguration {
                 .processor(monthlyFeesJobItemProcessor)
                 .writer(simpleJobItemWriter)
                 .taskExecutor(taskExecutor)
-                .throttleLimit(8)
+                .throttleLimit(THREAD_LIMIT)
                 .build();
     }
 
