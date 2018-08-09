@@ -3,17 +3,9 @@ package com.nutmeg.springbatchdemo.model;
 import lombok.Data;
 
 @Data
-public class AccountPosting {
+public class AccountPostingCsv {
     private String date;
     private String fundUuidOwn;
-    private String owner;
-    private String assetCode;
-    private String description;
-    private String type;
-    private String value;
-    private String internalAccount;
-    private String wrapperType;
-    private String source;
     private String fundName;
     private String returnIndex;
     private String medianIndex;
