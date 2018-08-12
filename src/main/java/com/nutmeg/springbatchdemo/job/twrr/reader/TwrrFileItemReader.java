@@ -21,5 +21,6 @@ public class TwrrFileItemReader extends FlatFileItemReader<AccountPostingCsv> {
         super.setLineMapper(accountPostingLineMapper);
         super.setLinesToSkip(skipLines);
         super.setResource(new ClassPathResource(FILE_PATH));
+        super.setSaveState(false);
     }
 }

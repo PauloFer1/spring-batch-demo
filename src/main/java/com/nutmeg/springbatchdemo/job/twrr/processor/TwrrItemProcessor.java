@@ -25,7 +25,7 @@ public class TwrrItemProcessor implements ItemProcessor<AccountPostingCsv, Accou
     public TwrrItemProcessor(
             @Value("#{jobParameters['fromErrorPercentage']}") final BigDecimal fromErrorPercentage,
             @Value("#{jobParameters['toErrorPercentage']}") final BigDecimal toErrorPercentage,
-            final TwrrService twrrService;
+            final TwrrService twrrService
     ) {
         this.fromErrorPercentage = fromErrorPercentage;
         this.toErrorPercentage = toErrorPercentage;
