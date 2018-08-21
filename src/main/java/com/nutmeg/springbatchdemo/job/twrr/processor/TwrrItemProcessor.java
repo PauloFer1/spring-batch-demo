@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @StepScope
 public class TwrrItemProcessor implements ItemProcessor<AccountPostingCsv, AccountPostingCsv> {
 
-    private static final String MANUAL_TYPE = "zzz";
+    private static final String MANUAL_TYPE = "ZZZ";
 
     private final BigDecimal fromErrorPercentage;
     private final BigDecimal toErrorPercentage;
@@ -34,11 +34,11 @@ public class TwrrItemProcessor implements ItemProcessor<AccountPostingCsv, Accou
 
     @Override
     public AccountPostingCsv process(AccountPostingCsv accountPostingCsv) throws Exception {
-        log.info("Processing: {}", accountPostingCsv.toString());
+        //log.info("Processing: {}", accountPostingCsv.toString());
 
         BigDecimal itemErrorPercentage = new BigDecimal(accountPostingCsv.getAbsoluteError());
         if (fromErrorPercentage.compareTo(itemErrorPercentage) < 0 && toErrorPercentage.compareTo(itemErrorPercentage) > 0) {
-            log.info("{} is between {} and {}", itemErrorPercentage, fromErrorPercentage, toErrorPercentage);
+            log.info("{} is between {} and {}", accountPostingCsv, fromErrorPercentage, toErrorPercentage);
             AccountPosting accountPosting = twrrService.get(accountPostingCsv.getFundUuidOwn(), accountPostingCsv.getDate());
             if (MANUAL_TYPE.equals(accountPosting.getType())
                     && accountPosting.getValue().equals(new BigDecimal(accountPostingCsv.getDifference()))) {

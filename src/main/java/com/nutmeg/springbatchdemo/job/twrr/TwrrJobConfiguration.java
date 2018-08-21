@@ -19,7 +19,7 @@ import org.springframework.core.task.TaskExecutor;
 public class TwrrJobConfiguration {
 
     private static final String JOB_NAME = "twrr_data";
-    private static final int CHUNK_SIZE = 10;
+    private static final int CHUNK_SIZE = 100;
     private static final SkipPolicy UNLIMITED_SKIPS = (throwable, skipCount) -> true;
 
     @Bean
